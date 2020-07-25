@@ -1,54 +1,52 @@
-# Code Editor Package for Rider
+# Code Editor Package for Visual Studio Code
 
-## [1.1.4] - 2019-11-21
+## [1.2.1] - 2020-05-15
 
-fix warning - unreachable code
-
-
-## [1.1.3] - 2019-10-17
-
- - Update External Editor, when new toolbox build was installed
- - Add xaml to default list of extensions to include in csproj
- - Avoid initializing Rider package in secondary Unity process, which does Asset processing
- - Reflect multiple csc.rsp arguments to generated csproj files: https://github.com/JetBrains/resharper-unity/issues/1337
- - Setting, which allowed to override LangVersion removed in favor of langversion in csc.rsp
- - Environment.NewLine is used in generated project files instead of Windows line separator.
-
-## [1.1.2] - 2019-09-18
-
-performance optimizations:
- - avoid multiple evaluations
- - avoid reflection in DisableSyncSolutionOnceCallBack
- - project generation optimization
-fixes:
- - avoid compilation error with incompatible `Test Framework` package
-
-## [1.1.1] - 2019-08-26
-
-parse nowarn in csc.rsp
-warning, when Unity was started from Rider, but external editor was different
-improved unit test support
-workaround to avoid Unity internal project-generation (fix #28)
+Source filtering adds support for asmref
 
 
-## [1.1.0] - 2019-07-02
+## [1.2.0] - 2020-03-04
 
-new setting to manage list of extensions to be opened with Rider
-avoid breaking everything on any unhandled exception in RiderScriptEditor cctor
-hide Rider settings, when different Editor is selected
-dynamically load only newer rider plugins
-path detection (work on unix symlinks)
-speed up for project generation
-lots of bug fixing
+Do not reference projects that has not been generated (case 1211057)
+Only open files that exists (case 1188394)
+Add individual toggle buttons for generating csprojects for packages
+Add support for Roslyn analyzers in project generation through csc.rsp and compiled assembly references
+Remove Release build target from csproj and sln
 
-## [1.0.8] - 2019-05-20
 
-Fix NullReferenceException when External editor was pointing to non-existing Rider everything was broken by null-ref.
+## [1.1.4] - 2020-01-02
 
-## [1.0.7] - 2019-05-16
+Delta project generation, only recompute the csproj files whose script modified.
 
-Initial migration steps from rider plugin to package.
-Fix OSX check and opening of files.
+
+## [1.1.3] - 2019-10-22
+
+Exe version of vscode will use Normal ProcessWindowStyle while cmd will use Hidden
+
+
+## [1.1.2] - 2019-08-30
+
+Fixing OSX open command arguments
+
+
+## [1.1.1] - 2019-08-19
+
+Support for Player Project. Generates specific csproj files containing files, reference, defines,
+etc. that will show how the assembly will be compiled for a target platform.
+
+
+## [1.1.0] - 2019-08-07
+
+Adds support for choosing extensions to be opened with VSCode. This can be done through the GUI in Preferences.
+Avoids opening all extensions after the change in core unity.
+
+
+## [1.0.7] - 2019-05-15
+
+Fix various OSX specific issues.
+Generate project on load if they are not generated.
+Fix path recognition.
+
 
 ## [1.0.6] - 2019-04-30
 
@@ -62,13 +60,10 @@ Add support for generating all csproj files.
 
 Fix relative package paths.
 Fix opening editor on mac.
+Add %LOCALAPPDATA%/Programs to the path of install paths.
 
-## [1.0.3] - 2019-04-12
+## [1.0.3] - 2019-01-01
 
-Fixing null reference issue for callbacks to Asset pipeline.
+### This is the first release of *Unity Package vscode_editor*.
 
-## [1.0.2] - 2019-01-01
-
-### This is the first release of *Unity Package rider_editor*.
-
-Using the newly created api to integrate Rider with Unity.
+Using the newly created api to integrate Visual Studio Code with Unity.
